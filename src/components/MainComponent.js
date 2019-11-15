@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
-import DishDetail from './DishdetailComponent';
+import DishDetail from './DishDetailComponent';
 import { DISHES } from '../shared/dishes';
 
 class Main extends Component {
@@ -10,12 +10,15 @@ class Main extends Component {
     super(props);
     this.state = {
         dishes: DISHES,
-        selectedDish: null
+        selectedDish: null,
+        comments: [],
     };
   }
 
-  onDishSelect(dishId) {
-    this.setState({ selectedDish: dishId});
+  onDishSelect = async (dishId) => {
+    await this.setState({ selectedDish: dishId});
+    console.log('Inside onDishSelect, id ', dishId);
+    console.log(this.state.selectedDish, this.state.dishes);
   }
 
   render() {
